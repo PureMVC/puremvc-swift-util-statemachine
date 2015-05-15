@@ -1,4 +1,4 @@
-## [PureMVC](http://puremvc.github.com/) [Swift](https://github.com/sshams/puremvc-swift-standard-framework/wiki) Utility: StateMachine
+## [PureMVC](http://puremvc.github.com/) [Swift](https://github.com/PureMVC/puremvc-swift-standard-framework/wiki) Utility: StateMachine
 
 This utility provides a simple yet effective Finite State Machine implementation, which allows the definition of discrete states, and the valid transitions to other states available from any given state, and the actions which trigger the transitions. A mechanism is provided for defining the entire state machine in XML and having a fully populated StateMachine injected into the PureMVC app. 
 
