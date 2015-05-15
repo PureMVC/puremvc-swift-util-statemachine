@@ -4,8 +4,8 @@ This utility provides a simple yet effective Finite State Machine implementation
 
 Standard and MultiCore versions are included along with unit tests.
 
-* [API Docs Standard](http://puremvc.org/pages/docs/Utility_Swift_StateMachine/standard/)
-* [API Docs MultiCore](http://puremvc.org/pages/docs/Utility_Swift_StateMachine/multicore/)
+* [API Docs Standard](http://puremvc.org/pages/docs/Swift/Utility_Swift_StateMachine/standard/)
+* [API Docs MultiCore](http://puremvc.org/pages/docs/Swift/Utility_Swift_StateMachine/multicore/)
 * [Discussion](http:/forums.puremvc.org/index.php?topic=2123.0)
 * [State Machine Overview Presentation](http://puremvc.tv/#P003/)
 
