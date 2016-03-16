@@ -16,6 +16,9 @@ Standard and MultiCore versions are included along with unit tests.
 * [iOS](http://en.wikipedia.org/wiki/IOS)
 * [Mac OS](http://en.wikipedia.org/wiki/Mac_OS)
 
+## Status
+Production - [Version 1.1](https://github.com/PureMVC/puremvc-swift-util-statemachine/blob/master/VERSION)
+
 ## License
 * PureMVC Swift Utility – StateMachine - Copyright © 2015-2025 Saad Shams
 * PureMVC - Copyright © 2015-2025 Futurescale, Inc.
