@@ -37,7 +37,7 @@ class FSMInjectorTest: XCTestCase {
     }
 
     func testConstructors() {
-        var fsm: String =
+        let fsm: String =
         "<fsm initial=''>" +
             "<state name='\(FSMInjectorTest.STATE1)' entering='\(FSMInjectorTest.ENTER1)'>" +
             "<transition action='\(FSMInjectorTest.ACTION1)' target='\(FSMInjectorTest.TARGET1)' />" +
@@ -50,7 +50,7 @@ class FSMInjectorTest: XCTestCase {
             "</state>" +
         "</fsm>"
         
-        var injector = FSMInjector(fsm: fsm)
+        let injector = FSMInjector(fsm: fsm)
         injector.inject()
         
         XCTAssertNotNil(injector, "Expecting inject not nil")
@@ -58,7 +58,7 @@ class FSMInjectorTest: XCTestCase {
     }
     
     func testInvalidFSM() {
-        var injector = FSMInjector(fsm: "")
+        let injector = FSMInjector(fsm: "")
         injector.inject()
         
         XCTAssertNotNil(injector, "Expecting inject not nil")

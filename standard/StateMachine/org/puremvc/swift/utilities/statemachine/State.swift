@@ -29,10 +29,10 @@ public class State {
     /**
     Constructor.
     
-    :param: id the id of the state
-    :param: entering an optional notification name to be sent when entering this state
-    :param: exiting an optional notification name to be sent when exiting this state
-    :param: changed an optional notification name to be sent when fully transitioned to this state
+    - parameter id: the id of the state
+    - parameter entering: an optional notification name to be sent when entering this state
+    - parameter exiting: an optional notification name to be sent when exiting this state
+    - parameter changed: an optional notification name to be sent when fully transitioned to this state
     */
     public init(name: String, entering: String?=nil, exiting: String?=nil, changed: String?=nil) {
         self.name = name
@@ -44,8 +44,8 @@ public class State {
     /**
     Define a transition.
     
-    :param: action the name of the StateMachine.ACTION Notification type.
-    :param: target the name of the target state to transition to.
+    - parameter action: the name of the StateMachine.ACTION Notification type.
+    - parameter target: the name of the target state to transition to.
     */
     public func defineTrans(action: String, target: String) {
         if getTarget(action) == nil {
@@ -56,7 +56,7 @@ public class State {
     /**
     Remove a previously defined transition.
     
-    :returns: the name of the target associated with the action
+    - returns: the name of the target associated with the action
     */
     public func removeTrans(action: String) -> String? {
         if let target = transitions[action] {
