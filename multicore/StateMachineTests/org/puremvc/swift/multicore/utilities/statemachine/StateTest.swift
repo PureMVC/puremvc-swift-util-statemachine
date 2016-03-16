@@ -41,7 +41,7 @@ class StateTest: XCTestCase {
     }
     
     func testDefineTrans() {
-        var state = State(name: "state1")
+        let state = State(name: "state1")
         state.defineTrans("action", target: "target")
         XCTAssertEqual(state.getTarget("action")!, "target", "Expecting state.getTarget('action') to be 'target'")
         
@@ -55,11 +55,11 @@ class StateTest: XCTestCase {
     }
     
     func testRemoveTrans() {
-        var state = State(name: "state1")
+        let state = State(name: "state1")
         state.defineTrans("action", target: "target")
         XCTAssertEqual(state.getTarget("action")!, "target", "Expecting state.getTarget('action') to be 'target'")
         
-        var removedTarget = state.removeTrans("action")
+        let removedTarget = state.removeTrans("action")
         XCTAssertNil(state.getTarget("action"), "Expecting state.getTarget('action') to be nil")
         XCTAssertTrue(removedTarget == "target", "Expecting removedTarget == 'target")
         
@@ -68,7 +68,7 @@ class StateTest: XCTestCase {
     }
     
     func testGetTarget() {
-        var state = State(name: "state1")
+        let state = State(name: "state1")
         state.defineTrans("action", target: "target")
         var target = state.getTarget("action")
         XCTAssertEqual(target!, "target", "Expecting target to be 'target'")

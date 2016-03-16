@@ -53,8 +53,8 @@ public class StateMachine: Mediator {
     /**
     Registers the entry and exit commands for a given state.
     
-    :param: state the state to which to register the above commands
-    :param: initial boolean telling if this is the initial state of the system
+    - parameter state: the state to which to register the above commands
+    - parameter initial: boolean telling if this is the initial state of the system
     */
     public func registerState(state: State, initial: Bool = false) -> Bool {
         if states[state.name] != nil { return false }
@@ -71,7 +71,7 @@ public class StateMachine: Mediator {
     Removes the entry and exit commands for a given state
     as well as the state mapping itself.
     
-    :param: state
+    - parameter state:
     */
     public func removeState(stateName: String) -> State? {
         if let state = states[stateName] {
@@ -97,8 +97,8 @@ public class StateMachine: Mediator {
     new `State` object as the `body` and the name of the
     new state in the `type`.
     
-    :param: nextState the next State to transition to.
-    :param: data is the optional Object that was sent in the `StateMachine.ACTION` notification body
+    - parameter nextState: the next State to transition to.
+    - parameter data: is the optional Object that was sent in the `StateMachine.ACTION` notification body
     */
     private func transitionTo(nextState: State, data: Any?) {
         
@@ -111,8 +111,8 @@ public class StateMachine: Mediator {
         }
         
         // Check to see whether the exiting guard has canceled the transition
-        if canceled! {
-            canceled = false
+        if let canceled = canceled where canceled == true {
+            self.canceled = false
             return
         }
         
@@ -122,8 +122,8 @@ public class StateMachine: Mediator {
         }
         
         // Check to see whether the entering guard has canceled the transition
-        if canceled! {
-            canceled = false
+        if let canceled = canceled where canceled == true {
+            self.canceled = false
             return
         }
         

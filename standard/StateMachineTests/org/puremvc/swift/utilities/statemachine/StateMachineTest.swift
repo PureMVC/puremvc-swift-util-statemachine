@@ -23,54 +23,57 @@ class StateMachineTest: XCTestCase {
     }
 
     func testConstructors() {
-        var stateMachine = StateMachine()
+        let stateMachine = StateMachine()
         
         XCTAssertNotNil(stateMachine, "Expecting stateMachine to be defined")
         XCTAssertNotNil(stateMachine as StateMachine, "Expecting stateMachine to be instance of StateMachine")
     }
     
     func testRegisterState() {
-        var stateMachine = StateMachine()
-        var state1 = State(name: "state1")
-        var registered = stateMachine.registerState(state1)
+        let stateMachine = StateMachine()
+        let state1 = State(name: "state1")
+        let registered = stateMachine.registerState(state1)
         
         XCTAssertTrue(registered, "Expecting state1 was registered")
         
-        var registeredAgain = stateMachine.registerState(state1)
+        let registeredAgain = stateMachine.registerState(state1)
         XCTAssertTrue(registeredAgain == false, "Expecting re-registration to return false")
         
     }
     
     func testremoveState() {
-        var stateMachine = StateMachine()
-        var state1 = State(name: "state1")
+        let stateMachine = StateMachine()
+        let state1 = State(name: "state1")
         stateMachine.registerState(state1)
         
-        var removedState = stateMachine.removeState("state1")
+        let removedState = stateMachine.removeState("state1")
         XCTAssertTrue(removedState === state1, "Expecting removedState === state1")
         
         stateMachine.removeState("state1")
     }
     
     func testGetCurrentState() {
-        var stateMachine = StateMachine()
+        let stateMachine = StateMachine()
         
         XCTAssertNil(stateMachine.currentState, "Expecting current state to be nil")
-        var state1 = State(name: "state1")
+        let state1 = State(name: "state1")
         stateMachine.currentState = state1
         
-        var currentState = stateMachine.currentState
+        let currentState = stateMachine.currentState
         XCTAssertNotNil(currentState, "Expecting currentState to be defined")
         XCTAssertTrue(currentState === state1, "Expecgin currentState === state1")
     }
     
     func testTransitionTo() {
-        var stateMachine = StateMachine()
-        var state1 = State(name: "state1")
-        var facade: Facade = Facade.getInstance() {Facade()} as! Facade
-        
+        let stateMachine = StateMachine()
+        let state1 = State(name: "state1")
         stateMachine.registerState(state1, initial: true)
-        //XCTAssertTrue(stateMachine.currentState === state1, "Expecting currentState to be state1")
+        
+        let facade: Facade = Facade.getInstance() {Facade()} as! Facade
+        facade.removeMediator(StateMachine.NAME)
+        facade.registerMediator(stateMachine)
+        
+        XCTAssertTrue(stateMachine.currentState! === state1, "Expecting currentState to be state1")
     }
 
     func testPerformanceExample() {

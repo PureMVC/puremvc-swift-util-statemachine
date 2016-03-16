@@ -45,7 +45,7 @@ public class FSMInjector: Notifier, FSMParserDelegate {
     */
     public func inject() {
         // Create the StateMachine
-        var stateMachine = StateMachine()
+        let stateMachine = StateMachine()
         
         // parse the FSM XML
         var fsmParser: FSMParser! = FSMParser(fsm: fsm)

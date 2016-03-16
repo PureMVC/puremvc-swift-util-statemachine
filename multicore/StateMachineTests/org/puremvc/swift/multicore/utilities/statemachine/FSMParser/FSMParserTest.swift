@@ -26,9 +26,9 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
 
     func testConstructors() {
-        var fsm = "<fsm></fsm>"
+        let fsm = "<fsm></fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -40,8 +40,8 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testInitial() {
-        var fsm = "<fsm initial=''></fsm>"
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsm = "<fsm initial=''></fsm>"
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -52,12 +52,12 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testInitialAndState() {
-        var fsm =
+        let fsm =
         "<fsm initial='initial_state'>" +
             "<state name='state11' />" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -68,12 +68,12 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testInvalidState() {
-        var fsm =
+        let fsm =
         "<fsm>" +
             "<state />" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -81,14 +81,14 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testMultipleStates() {
-        var fsm =
+        let fsm =
         "<fsm initial='initial_state'>" +
             "<state name='state11' />" +
             "<state name='state22' />" +
             "<state name='state33' />" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -99,14 +99,14 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testStateAttributes() {
-        var fsm =
+        let fsm =
         "<fsm initial='initial_state'>" +
             "<state name='state11' entering='enter' />" +
             "<state name='state22' exiting='exit' />" +
             "<state name='state33' changed='change' />" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -129,7 +129,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testStateTransition() {
-        var fsm =
+        let fsm =
         "<fsm initial='initial_state'>" +
             "<state name='state11'>" +
                 "<transition action='action' target='target' />" +
@@ -137,7 +137,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
             "</state>" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -148,7 +148,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testDuplicateTransition() {
-        var fsm =
+        let fsm =
         "<fsm initial='initial_state'>" +
             "<state name='state11'>" +
                 "<transition action='action' target='target' />" +
@@ -156,7 +156,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
             "</state>" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         
@@ -183,18 +183,18 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
     }
     
     func testStringInterpolation() {
-        var state1 = "state1"
-        var action1 = "action1"
-        var target1 = "target1"
+        let state1 = "state1"
+        let action1 = "action1"
+        let target1 = "target1"
         
-        var fsm =
+        let fsm =
         "<fsm>" +
             "<state name='\(state1)'>" +
                 "<transition action='\(action1)' target='\(target1)' />" +
             "</state>" +
         "</fsm>"
         
-        var fsmParser = FSMParser(fsm: fsm)
+        let fsmParser = FSMParser(fsm: fsm)
         fsmParser.delegate = self
         fsmParser.parse()
         

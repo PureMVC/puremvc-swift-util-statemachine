@@ -32,32 +32,34 @@ public class FSMParser: NSObject, NSXMLParserDelegate {
     
     /// Start the xml parsing process
     public func parse() {
-        var data = fsm.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        var parser = NSXMLParser(data: data!)
+        let data = fsm.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let parser = NSXMLParser(data: data!)
         parser.delegate = self
         parser.parse()
     }
 
     /// Creates a `State` instance from its XML definition.
-    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case "fsm":
             stateList = []
-            if let initial = attributeDict["initial"] as? String {
+            if let initial = attributeDict["initial"] {
                 self.initial = initial
             }
         // Create State object
         case "state":
-            if let name: String = attributeDict["name"] as? String {
-                var entering = attributeDict["entering"] as? String
-                var exiting = attributeDict["exiting"] as? String
-                var changed = attributeDict["changed"] as? String
+            if let name: String = attributeDict["name"] {
+                let entering = attributeDict["entering"]
+                let exiting = attributeDict["exiting"]
+                let changed = attributeDict["changed"]
                 
-                stateList?.append(State(name: name, entering: entering, exiting: exiting, changed: changed))
+                stateList!.append(State(name: name, entering: entering, exiting: exiting, changed: changed))
             }
         // Create transitions
         case "transition":
-            stateList![stateList!.count-1].defineTrans(attributeDict["action"] as! String, target: attributeDict["target"] as! String)
+            if let action = attributeDict["action"], let target = attributeDict["target"] {
+                stateList![stateList!.count-1].defineTrans(action, target: target)
+            }
         default:
             break
         }
