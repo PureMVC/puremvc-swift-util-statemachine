@@ -44,12 +44,12 @@ class StateMachineTest: XCTestCase {
     func testremoveState() {
         let stateMachine = StateMachine()
         let state1 = State(name: "state1")
-        stateMachine.registerState(state1)
+        _ = stateMachine.registerState(state1)
         
         let removedState = stateMachine.removeState("state1")
         XCTAssertTrue(removedState === state1, "Expecting removedState === state1")
         
-        stateMachine.removeState("state1")
+        _ = stateMachine.removeState("state1")
     }
     
     func testGetCurrentState() {
@@ -67,10 +67,10 @@ class StateMachineTest: XCTestCase {
     func testTransitionTo() {
         let stateMachine = StateMachine()
         let state1 = State(name: "state1")
-        stateMachine.registerState(state1, initial: true)
+        _ = stateMachine.registerState(state1, initial: true)
         
         let facade: Facade = Facade.getInstance() {Facade()} as! Facade
-        facade.removeMediator(StateMachine.NAME)
+        _ = facade.removeMediator(StateMachine.NAME)
         facade.registerMediator(stateMachine)
         
         XCTAssertTrue(stateMachine.currentState! === state1, "Expecting currentState to be state1")
@@ -78,7 +78,7 @@ class StateMachineTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }

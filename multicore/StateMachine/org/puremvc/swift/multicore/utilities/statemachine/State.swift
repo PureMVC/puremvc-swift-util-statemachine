@@ -47,7 +47,7 @@ public class State {
     - parameter action: the name of the StateMachine.ACTION Notification type.
     - parameter target: the name of the target state to transition to.
     */
-    public func defineTrans(action: String, target: String) {
+    public func defineTrans(_ action: String, target: String) {
         if getTarget(action) == nil {
             transitions[action] = target
         }
@@ -58,7 +58,7 @@ public class State {
     
     - returns: the name of the target associated with the action
     */
-    public func removeTrans(action: String) -> String? {
+    public func removeTrans(_ action: String) -> String? {
         if let target = transitions[action] {
             transitions[action] = nil
             return target
@@ -67,7 +67,7 @@ public class State {
     }
     
     /// Get the target state name for a given action.
-    public func getTarget(action: String) -> String? {
+    public func getTarget(_ action: String) -> String? {
         return transitions[action]
     }
     

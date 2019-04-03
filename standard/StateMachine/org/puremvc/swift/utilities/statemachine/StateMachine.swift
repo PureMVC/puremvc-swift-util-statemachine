@@ -56,7 +56,7 @@ public class StateMachine: Mediator {
     - parameter state: the state to which to register the above commands
     - parameter initial: boolean telling if this is the initial state of the system
     */
-    public func registerState(state: State, initial: Bool = false) -> Bool {
+    public func registerState(_ state: State, initial: Bool = false) -> Bool {
         if states[state.name] != nil { return false }
         states[state.name] = state
         if initial == true {
@@ -73,7 +73,7 @@ public class StateMachine: Mediator {
     
     - parameter state:
     */
-    public func removeState(stateName: String) -> State? {
+    public func removeState(_ stateName: String) -> State? {
         if let state = states[stateName] {
             states[stateName] = nil
             return state
@@ -100,7 +100,7 @@ public class StateMachine: Mediator {
     - parameter nextState: the next State to transition to.
     - parameter data: is the optional Object that was sent in the `StateMachine.ACTION` notification body
     */
-    private func transitionTo(nextState: State, data: Any?) {
+    private func transitionTo(_ nextState: State, data: Any?) {
         
         // Clear the cancel flag
         canceled = false
@@ -111,7 +111,7 @@ public class StateMachine: Mediator {
         }
         
         // Check to see whether the exiting guard has canceled the transition
-        if let canceled = canceled where canceled == true {
+        if let canceled = canceled, canceled == true {
             self.canceled = false
             return
         }
@@ -122,7 +122,7 @@ public class StateMachine: Mediator {
         }
         
         // Check to see whether the entering guard has canceled the transition
-        if let canceled = canceled where canceled == true {
+        if let canceled = canceled, canceled == true {
             self.canceled = false
             return
         }
@@ -154,7 +154,7 @@ public class StateMachine: Mediator {
     
     `StateMachine.CANCEL`: Cancels the transition if sent in response to the exiting note for the current state.
     */
-    public override func handleNotification(notification: INotification) {
+    public override func handleNotification(_ notification: INotification) {
         switch notification.name {
         case StateMachine.ACTION:
             if let action = notification.type {

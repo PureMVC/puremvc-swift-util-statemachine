@@ -11,7 +11,7 @@ import Foundation
 /**
 A parser for the Finite State Machine XML representation.
 */
-public class FSMParser: NSObject, NSXMLParserDelegate {
+public class FSMParser: NSObject, XMLParserDelegate {
     
     // The XML FSM definition
     private var fsm: String
@@ -32,14 +32,14 @@ public class FSMParser: NSObject, NSXMLParserDelegate {
     
     /// Start the xml parsing process
     public func parse() {
-        let data = fsm.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        let parser = NSXMLParser(data: data!)
+        let data = fsm.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        let parser = XMLParser(data: data!)
         parser.delegate = self
         parser.parse()
     }
 
     /// Creates a `State` instance from its XML definition.
-    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         switch elementName {
         case "fsm":
             stateList = []
@@ -66,7 +66,7 @@ public class FSMParser: NSObject, NSXMLParserDelegate {
     }
     
     /// Called by the parser object when it has successfully completed parsing.
-    public func parserDidEndDocument(parser: NSXMLParser) {
+    public func parserDidEndDocument(_ parser: XMLParser) {
         delegate?.onParse(stateList, initial: initial)
     }
 

@@ -205,7 +205,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }
@@ -214,7 +214,7 @@ class fsmParserTest: XCTestCase, FSMParserDelegate {
         
     }
     
-    func onParse(stateList: [State]?, initial: String?) {
+    func onParse(_ stateList: [State]?, initial: String?) {
         self.initial = initial
         self.stateList = stateList
     }

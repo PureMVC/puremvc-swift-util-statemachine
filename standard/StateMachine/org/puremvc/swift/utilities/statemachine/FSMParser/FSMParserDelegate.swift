@@ -10,6 +10,6 @@
 public protocol FSMParserDelegate: class {
     
     /// Adopted by the FSMParser's Delegate object to be notified when it has successfully completed parsing.
-    func onParse(stateList: [State]?, initial: String?)
+    func onParse(_ stateList: [State]?, initial: String?)
 
 }

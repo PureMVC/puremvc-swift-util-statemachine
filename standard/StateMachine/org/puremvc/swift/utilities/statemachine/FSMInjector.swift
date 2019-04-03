@@ -59,7 +59,7 @@ public class FSMInjector: Notifier, FSMParserDelegate {
         // Register all the states with the StateMachine
         if let states = stateList {
             for state in states {
-                stateMachine.registerState(state, initial: isInitial(state.name))
+                _ = stateMachine.registerState(state, initial: isInitial(state.name))
             }
         }
         
@@ -68,13 +68,13 @@ public class FSMInjector: Notifier, FSMParserDelegate {
     }
 
     /// Called by the FSMParser object when it has successfully completed parsing.
-    public func onParse(stateList: [State]?, initial: String?) {
+    public func onParse(_ stateList: [State]?, initial: String?) {
         self.stateList = stateList
         self.initial = initial
     }
     
     /// Is the given state the initial state?
-    private func isInitial(stateName: String) -> Bool {
+    private func isInitial(_ stateName: String) -> Bool {
         return stateName == initial
     }
     

@@ -64,7 +64,7 @@ class StateTest: XCTestCase {
         XCTAssertNil(state.getTarget("action"), "Expecting state.getTarget('action') to be nil")
         XCTAssertTrue(removedTarget == "target", "Expecting removedTarget == 'target")
         
-        state.removeTrans("action")
+        _ = state.removeTrans("action")
         XCTAssertNil(state.getTarget("action"), "Expecting removal not to crash")
     }
     
@@ -80,7 +80,7 @@ class StateTest: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measure() {
             // Put the code you want to measure the time of here.
         }
     }
