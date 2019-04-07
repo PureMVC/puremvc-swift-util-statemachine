@@ -21,8 +21,8 @@ Standard and MultiCore versions are included along with unit tests.
 Production - [Version 1.3](https://github.com/PureMVC/puremvc-swift-util-statemachine/blob/master/VERSION)
 
 ## License
-* PureMVC Swift Utility – StateMachine - Copyright © 2015-2019 Saad Shams
-* PureMVC - Copyright © 2015-2019 Futurescale, Inc.
+* PureMVC Swift Utility – StateMachine - Copyright © 2015-2019 [Saad Shams](https://www.linkedin.com/in/muizz/)
+* PureMVC - Copyright © 2015-2019 [Futurescale, Inc.](http://futurescale.com/)
 * All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
